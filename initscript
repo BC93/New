@@ -1,0 +1,38 @@
+#!/bin/bash
+
+apt-get clean -y && apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y
+
+apt-get install linux-headers-$(uname -r)
+
+apt-get install git
+
+apt-get install dkms
+
+apt-get build-deps virtualbox
+
+apt-get install virtualbox
+
+apt-get install virtualbox-dkms
+
+apt-get install zsh
+
+apt-get install vim
+cd
+
+# Install sp13 Version of VIM
+curl https://j.mp/spf13-vim3 -L > spf13-vim.sh && sh spf13-vim.sh
+cd
+
+# Install Oh-my-Zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+cd
+
+# Change default theme to amuse theme
+sed -i -e s/"robbyrussell"/"amuse"/g .zshrc
+
+# Add my preferred plugins
+sed -i -e s/plugins=(git )/plugins=(git catimg common-aliases compleat debian fasd python vi-mode web-searcha wd )/g .zshrc
+
+ 
+
+
